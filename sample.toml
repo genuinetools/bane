@@ -2,6 +2,7 @@
 # so the final profile name will be `docker-nginx`
 Name = "nginx"
 
+[Filesystem]
 # read only paths for the container
 ReadOnlyPaths = [
 	"/bin/**",
@@ -34,12 +35,13 @@ WritablePaths = [
 	"/var/run/nginx.pid"
 ]
 
-# executable files for the container
-[Executables]
-Allow = [
+# allowed executable files for the container
+AllowExec = [
 	"/usr/sbin/nginx"
 ]
-Deny = [
+
+# denied executable files
+DenyExec = [
 	"/bin/dash",
 	"/bin/sh",
 	"/usr/bin/top"

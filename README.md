@@ -33,47 +33,49 @@ Below is the sample config for nginx in a container:
 # so the final profile name will be `docker-nginx`
 Name = "nginx"
 
+[Filesystem]
 # read only paths for the container
 ReadOnlyPaths = [
-    "/bin/**",
-    "/bin/**",
-    "/boot/**",
-    "/dev/**",
-    "/etc/**",
-    "/home/**",
-    "/lib/**",
-    "/lib64/**",
-    "/media/**",
-    "/mnt/**",
-    "/opt/**",
-    "/proc/**",
-    "/root/**",
-    "/sbin/**",
-    "/srv/**",
-    "/tmp/**",
-    "/sys/**",
-    "/usr/**",
+	"/bin/**",
+	"/bin/**",
+	"/boot/**",
+	"/dev/**",
+	"/etc/**",
+	"/home/**",
+	"/lib/**",
+	"/lib64/**",
+	"/media/**",
+	"/mnt/**",
+	"/opt/**",
+	"/proc/**",
+	"/root/**",
+	"/sbin/**",
+	"/srv/**",
+	"/tmp/**",
+	"/sys/**",
+	"/usr/**",
 ]
 
 # paths where you want to log on write
 LogOnWritePaths = [
-    "/**"
+	"/**"
 ]
 
 # paths where you can write
 WritablePaths = [
-    "/var/run/nginx.pid"
+	"/var/run/nginx.pid"
 ]
 
-# executable files for the container
-[Executables]
-Allow = [
-    "/usr/sbin/nginx"
+# allowed executable files for the container
+AllowExec = [
+	"/usr/sbin/nginx"
 ]
-Deny = [
-    "/bin/dash",
-    "/bin/sh",
-    "/usr/bin/top"
+
+# denied executable files
+DenyExec = [
+	"/bin/dash",
+	"/bin/sh",
+	"/usr/bin/top"
 ]
 
 [Network]

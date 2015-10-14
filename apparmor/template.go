@@ -18,15 +18,15 @@ profile {{.Name}} flags=(attach_disconnected,mediate_deleted) {
   file,
   umount,
 
-{{range $value := .ReadOnlyPaths}}  deny {{$value}} wl,
+{{range $value := .Filesystem.ReadOnlyPaths}}  deny {{$value}} wl,
 {{end}}
-{{range $value := .LogOnWritePaths}}  audit {{$value}} w,
+{{range $value := .Filesystem.LogOnWritePaths}}  audit {{$value}} w,
 {{end}}
-{{range $value := .WritablePaths}}  {{$value}} w,
+{{range $value := .Filesystem.WritablePaths}}  {{$value}} w,
 {{end}}
-{{range $value := .Executables.Allow}}  {{$value}} ix,
+{{range $value := .Filesystem.AllowExec}}  {{$value}} ix,
 {{end}}
-{{range $value := .Executables.Deny}}  deny {{$value}} mrwklx,
+{{range $value := .Filesystem.DenyExec}}  deny {{$value}} mrwklx,
 {{end}}
 
   deny @{PROC}/{*,**^[0-9*],sys/kernel/shm*} wkx,

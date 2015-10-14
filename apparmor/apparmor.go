@@ -13,21 +13,21 @@ import (
 // ProfileConfig defines the config for an
 // apparmor profile to be generated from
 type ProfileConfig struct {
-	Name            string
-	Executables     ExecConfig
-	ReadOnlyPaths   []string
-	LogOnWritePaths []string
-	WritablePaths   []string
-	Network         NetConfig
+	Name       string
+	Filesystem FsConfig
+	Network    NetConfig
 
 	Imports      []string
 	InnerImports []string
 }
 
-// ExecConfig defines the executable options for a profile
-type ExecConfig struct {
-	Allow []string
-	Deny  []string
+// FsConfig defines the filesystem options for a profile
+type FsConfig struct {
+	ReadOnlyPaths   []string
+	LogOnWritePaths []string
+	WritablePaths   []string
+	AllowExec       []string
+	DenyExec        []string
 }
 
 // NetConfig defines the network options for a profile
