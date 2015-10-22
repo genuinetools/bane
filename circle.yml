@@ -1,0 +1,9 @@
+dependencies:
+  post:
+    # install golint
+    - go get github.com/golang/lint/golint
+
+test:
+  pre:
+    - go vet ./...
+    - golint ./...

@@ -1,4 +1,7 @@
 # bane
+
+[![Circle CI](https://circleci.com/gh/jfrazelle/bane.svg?style=svg)](https://circleci.com/gh/jfrazelle/bane)
+
 AppArmor profile generator for docker containers. Basically a better AppArmor
 profile, than creating one by hand, because who would ever do that.
 
