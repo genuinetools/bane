@@ -23,7 +23,7 @@ const (
  Version: %s
 
 `
-	// VERSION is the binary version
+	// VERSION is the binary version.
 	VERSION = "v0.1.0"
 )
 

@@ -11,7 +11,7 @@ import (
 )
 
 // ProfileConfig defines the config for an
-// apparmor profile to be generated from
+// apparmor profile to be generated from.
 type ProfileConfig struct {
 	Name       string
 	Filesystem FsConfig
@@ -21,7 +21,7 @@ type ProfileConfig struct {
 	InnerImports []string
 }
 
-// FsConfig defines the filesystem options for a profile
+// FsConfig defines the filesystem options for a profile.
 type FsConfig struct {
 	ReadOnlyPaths   []string
 	LogOnWritePaths []string
@@ -30,16 +30,16 @@ type FsConfig struct {
 	DenyExec        []string
 }
 
-// NetConfig defines the network options for a profile
-// for example you probably don't need NetworkRaw if your
-// application doesn't `ping`
+// NetConfig defines the network options for a profile.
+// For example you probably don't need NetworkRaw if your
+// application doesn't `ping`.
 type NetConfig struct {
 	Raw    bool
 	Packet bool
 }
 
 // Generate uses the baseTemplate to generate an apparmor profile
-// for the ProfileConfig passed
+// for the ProfileConfig passed.
 func (profile *ProfileConfig) Generate(out io.Writer) error {
 	compiled, err := template.New("apparmor_profile").Parse(baseTemplate)
 	if err != nil {
@@ -72,7 +72,7 @@ func abstractionsExists(name string) bool {
 }
 
 // Install takes a profile config, generates the profile
-// and installs it in the given directory with `apparmor_parser`
+// and installs it in the given directory with `apparmor_parser`.
 func (profile *ProfileConfig) Install(dir string) error {
 	// Make sure the path where they want to save the profile exists
 	if err := os.MkdirAll(dir, 0755); err != nil {
