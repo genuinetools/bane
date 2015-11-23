@@ -40,7 +40,6 @@ Name = "nginx"
 # read only paths for the container
 ReadOnlyPaths = [
 	"/bin/**",
-	"/bin/**",
 	"/boot/**",
 	"/dev/**",
 	"/etc/**",
