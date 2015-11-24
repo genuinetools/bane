@@ -117,7 +117,7 @@ $ bane sample.toml
 # `docker run --security-opt="apparmor:docker-nginx"`
 
 # now let's run nginx
-$ docker -d run --security-opt="apparmor:docker-nginx" -p 80:80 nginx
+$ docker run -d --security-opt="apparmor:docker-nginx" -p 80:80 nginx
 ```
 
 Using custom AppArmor profiles has never been easier!
