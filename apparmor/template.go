@@ -14,7 +14,6 @@ profile {{.Name}} flags=(attach_disconnected,mediate_deleted) {
 {{end}}
 {{if .Network.Packet}}{{else}}  deny network packet,
 {{end}}
-  capability,
   file,
   umount,
 
@@ -27,6 +26,10 @@ profile {{.Name}} flags=(attach_disconnected,mediate_deleted) {
 {{range $value := .Filesystem.AllowExec}}  {{$value}} ix,
 {{end}}
 {{range $value := .Filesystem.DenyExec}}  deny {{$value}} mrwklx,
+{{end}}
+{{range $value := .Capabilities.Allow}}  capability {{$value}},
+{{end}}
+{{range $value := .Capabilities.Deny}}  deny capability {{$value}},
 {{end}}
 
   deny @{PROC}/{*,**^[0-9*],sys/kernel/shm*} wkx,
