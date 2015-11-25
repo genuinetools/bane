@@ -1,6 +1,6 @@
 # name of the profile, we will auto prefix with `docker-`
 # so the final profile name will be `docker-nginx`
-Name = "nginx"
+Name = "nginx-sample"
 
 [Filesystem]
 # read only paths for the container
