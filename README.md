@@ -29,7 +29,7 @@ $ bane -h
 
 ### Config File
 
-A sample config for nginx in a container is available in [sample.toml](sample.toml)
+[sample.toml](sample.toml) is a AppArmor sample config for nginx in a container.
 
 #### File Globbing
 
