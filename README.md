@@ -29,63 +29,7 @@ $ bane -h
 
 ### Config File
 
-Below is the sample config for nginx in a container:
-
-```toml
-# name of the profile, we will auto prefix with `docker-`
-# so the final profile name will be `docker-nginx`
-Name = "nginx"
-
-[Filesystem]
-# read only paths for the container
-ReadOnlyPaths = [
-	"/bin/**",
-	"/boot/**",
-	"/dev/**",
-	"/etc/**",
-	"/home/**",
-	"/lib/**",
-	"/lib64/**",
-	"/media/**",
-	"/mnt/**",
-	"/opt/**",
-	"/proc/**",
-	"/root/**",
-	"/sbin/**",
-	"/srv/**",
-	"/tmp/**",
-	"/sys/**",
-	"/usr/**",
-]
-
-# paths where you want to log on write
-LogOnWritePaths = [
-	"/**"
-]
-
-# paths where you can write
-WritablePaths = [
-	"/var/run/nginx.pid"
-]
-
-# allowed executable files for the container
-AllowExec = [
-	"/usr/sbin/nginx"
-]
-
-# denied executable files
-DenyExec = [
-	"/bin/dash",
-	"/bin/sh",
-	"/usr/bin/top"
-]
-
-[Network]
-# if you don't need to ping in a container, you can probably
-# set Raw to false and deny network raw
-Raw = false
-Packet = false
-```
+[sample.toml](sample.toml) is a AppArmor sample config for nginx in a container.
 
 #### File Globbing
 
@@ -112,12 +56,12 @@ automatically install the profile in a directory
 `/etc/apparmor.d/containers/` and run `apparmor_parser`.
 
 ```console
-$ bane sample.toml
+$ sudo bane sample.toml
 # Profile installed successfully you can now run the profile with
-# `docker run --security-opt="apparmor:docker-nginx"`
+# `docker run --security-opt="apparmor:docker-nginx-sample"`
 
 # now let's run nginx
-$ docker run -d --security-opt="apparmor:docker-nginx" -p 80:80 nginx
+$ docker run -d --security-opt="apparmor:docker-nginx-sample" -p 80:80 nginx
 ```
 
 Using custom AppArmor profiles has never been easier!
@@ -125,7 +69,7 @@ Using custom AppArmor profiles has never been easier!
 **Now let's try to do malicious activites with the sample profile:**
 
 ```console
-$ docker run --security-opt="apparmor:docker-nginx" -p 80:80 --rm -it nginx bash
+$ docker run --security-opt="apparmor:docker-nginx-sample" -p 80:80 --rm -it nginx bash
 root@6da5a2a930b9:~# ping 8.8.8.8
 ping: Lacking privilege for raw socket.
 
@@ -161,71 +105,11 @@ Sample `dmesg` output when using `LogOnWritePaths`:
 
 ### What does the generated profile look like?
 
-For the above `sample.toml` the generated profile is:
-
-```
-#include <tunables/global>
-
-profile docker-nginx flags=(attach_disconnected,mediate_deleted) {
-  #include <abstractions/base>
-
-  network,
-  deny network raw,
-  deny network packet,
-
-  capability,
-  file,
-  umount,
-
-  deny /bin/** wl,
-  deny /bin/** wl,
-  deny /boot/** wl,
-  deny /dev/** wl,
-  deny /etc/** wl,
-  deny /home/** wl,
-  deny /lib/** wl,
-  deny /lib64/** wl,
-  deny /media/** wl,
-  deny /mnt/** wl,
-  deny /opt/** wl,
-  deny /proc/** wl,
-  deny /root/** wl,
-  deny /sbin/** wl,
-  deny /srv/** wl,
-  deny /tmp/** wl,
-  deny /sys/** wl,
-  deny /usr/** wl,
-
-  audit /** w,
-
-  /var/run/nginx.pid w,
-
-  /usr/sbin/nginx ix,
-
-  deny /bin/dash mrwklx,
-  deny /bin/sh mrwklx,
-  deny /usr/bin/top mrwklx,
-
-  deny @{PROC}/{*,**^[0-9*],sys/kernel/shm*} wkx,
-  deny @{PROC}/sysrq-trigger rwklx,
-  deny @{PROC}/mem rwklx,
-  deny @{PROC}/kmem rwklx,
-  deny @{PROC}/kcore rwklx,
-  deny mount,
-  deny /sys/[^f]*/** wklx,
-  deny /sys/f[^s]*/** wklx,
-  deny /sys/fs/[^c]*/** wklx,
-  deny /sys/fs/c[^g]*/** wklx,
-  deny /sys/fs/cg[^r]*/** wklx,
-  deny /sys/firmware/efi/efivars/** rwklx,
-  deny /sys/kernel/security/** rwklx,
-}
-```
+For the above `sample.toml` the generated profile is available as [docker-nginx-sample](docker-nginx-sample).
 
 ## TODO
 
 - add all the network controls like `tcp` etc
 - more tunables
-- add capabilities
 - add syscalls
 - tests (integration, unit)
