@@ -27,11 +27,12 @@ profile {{.Name}} flags=(attach_disconnected,mediate_deleted) {
 {{end}}
 {{range $value := .Filesystem.DenyExec}}  deny {{$value}} mrwklx,
 {{end}}
-{{range $value := .Capabilities.Allow}}  capability {{$value}},
-{{end}}
+{{if .Capabilities.Deny}}
+  capability,
 {{range $value := .Capabilities.Deny}}  deny capability {{$value}},
-{{end}}
-
+{{end}}{{else}}
+{{range $value := .Capabilities.Allow}}  capability {{$value}},
+{{end}}{{end}}
   deny @{PROC}/{*,**^[0-9*],sys/kernel/shm*} wkx,
   deny @{PROC}/sysrq-trigger rwklx,
   deny @{PROC}/mem rwklx,
