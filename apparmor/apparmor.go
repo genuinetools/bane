@@ -13,9 +13,10 @@ import (
 // ProfileConfig defines the config for an
 // apparmor profile to be generated from.
 type ProfileConfig struct {
-	Name       string
-	Filesystem FsConfig
-	Network    NetConfig
+	Name         string
+	Filesystem   FsConfig
+	Network      NetConfig
+	Capabilities CapConfig
 
 	Imports      []string
 	InnerImports []string
@@ -36,6 +37,13 @@ type FsConfig struct {
 type NetConfig struct {
 	Raw    bool
 	Packet bool
+}
+
+// CapConfig defines the allowed or denied kernel capabilities
+// for a profile.
+type CapConfig struct {
+	Allow []string
+	Deny  []string
 }
 
 // Generate uses the baseTemplate to generate an apparmor profile

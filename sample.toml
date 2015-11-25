@@ -46,6 +46,16 @@ DenyExec = [
 	"/usr/bin/top"
 ]
 
+# allowed capabilities
+[Capabilities]
+Allow = [
+	"chown",
+	"dac_override",
+	"setuid",
+	"setgid",
+	"net_bind_service"
+]
+
 [Network]
 # if you don't need to ping in a container, you can probably
 # set Raw to false and deny network raw
