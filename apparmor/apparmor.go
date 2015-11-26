@@ -34,9 +34,11 @@ type FsConfig struct {
 // NetConfig defines the network options for a profile.
 // For example you probably don't need NetworkRaw if your
 // application doesn't `ping`.
+// Currently limited to AppArmor 2.3-2.6 rules.
 type NetConfig struct {
-	Raw    bool
-	Packet bool
+	Raw       bool
+	Packet    bool
+	Protocols []string
 }
 
 // CapConfig defines the allowed or denied kernel capabilities

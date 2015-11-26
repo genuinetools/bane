@@ -6,7 +6,11 @@ profile docker-nginx-sample flags=(attach_disconnected,mediate_deleted) {
   #include <abstractions/base>
 
 
-  network,
+
+  network inet tcp,
+  network inet udp,
+  network inet icmp,
+
   deny network raw,
 
   deny network packet,

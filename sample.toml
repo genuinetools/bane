@@ -61,3 +61,8 @@ Allow = [
 # set Raw to false and deny network raw
 Raw = false
 Packet = false
+Protocols = [
+	"tcp",
+	"udp",
+	"icmp"
+]
