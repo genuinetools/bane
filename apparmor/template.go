@@ -9,7 +9,11 @@ profile {{.Name}} flags=(attach_disconnected,mediate_deleted) {
 {{range $value := .InnerImports}}  {{$value}}
 {{end}}
 
+{{if .Network.Protocols}}
+{{range $value := .Network.Protocols}}  network inet {{$value}},
+{{end}}{{else}}
   network,
+{{end}}
 {{if .Network.Raw}}{{else}}  deny network raw,
 {{end}}
 {{if .Network.Packet}}{{else}}  deny network packet,
