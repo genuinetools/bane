@@ -66,7 +66,7 @@ $ docker run -d --security-opt="apparmor:docker-nginx-sample" -p 80:80 nginx
 
 Using custom AppArmor profiles has never been easier!
 
-**Now let's try to do malicious activites with the sample profile:**
+**Now let's try to do malicious activities with the sample profile:**
 
 ```console
 $ docker run --security-opt="apparmor:docker-nginx-sample" -p 80:80 --rm -it nginx bash
