@@ -107,9 +107,9 @@ Sample `dmesg` output when using `LogOnWritePaths`:
 
 For the above `sample.toml` the generated profile is available as [docker-nginx-sample](docker-nginx-sample).
 
-## TODO
+### Integration with Docker
 
-- add all the network controls like `tcp` etc
-- more tunables
-- add syscalls
-- tests (integration, unit)
+This was originally a proof of concept for what will hopefully become a native
+security profile in the Docker engine. For more information on this, see 
+[docker/docker#17142](https://github.com/docker/docker/issues/17142).
+
