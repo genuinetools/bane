@@ -6,8 +6,9 @@ AppArmor profile generator for docker containers. Basically a better AppArmor
 profile, than creating one by hand, because who would ever do that.
 
 > "Reviewing AppArmor profile pull requests is the _bane_ of my existence"
->  Jess Frazelle
+>  - Jess Frazelle
 
+![bane](bane.jpg)
 
 ```console
 $ bane -h
@@ -113,4 +114,3 @@ This was originally a proof of concept for what will hopefully become a native
 security profile in the Docker engine. For more information on this, see 
 [docker/docker#17142](https://github.com/docker/docker/issues/17142).
 
-![bane](bane.jpg)
