@@ -50,7 +50,7 @@ func init() {
 	flag.Parse()
 
 	if flag.NArg() < 1 {
-		usageAndExit("", 1)
+		usageAndExit("Pass the path to the config file.", 1)
 	}
 
 	// parse the arg
