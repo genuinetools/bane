@@ -1,3 +1,6 @@
+machine:
+  environment:
+    GO15VENDOREXPERIMENT: 1
 dependencies:
   post:
     # install golint
@@ -5,6 +8,8 @@ dependencies:
 
 test:
   pre:
-    - go vet ./...
-    - test -z "$(golint ./... | tee /dev/stderr)"
-    - test -z "$(gofmt -s -l . | tee /dev/stderr)"
+    - go vet $(go list ./... | grep -v vendor)
+    - test -z "$(golint ./... | grep -v vendor | tee /dev/stderr)"
+    - test -z "$(gofmt -s -l . | grep -v vendor | tee /dev/stderr)"
+  override:
+    - go test $(go list ./... | grep -v vendor)
