@@ -37,7 +37,8 @@ profile {{.Name}} flags=(attach_disconnected,mediate_deleted) {
 {{end}}{{else}}
 {{range $value := .Capabilities.Allow}}  capability {{$value}},
 {{end}}{{end}}
-  deny @{PROC}/{*,**^[0-9*],sys/kernel/shm*} wkx,
+  deny @{PROC}/* w,   # deny write for all files directly in /proc (not in a subdir)
+  deny @{PROC}/{[^1-9],[^1-9][^0-9],[^1-9s][^0-9y][^0-9s],[^1-9][^0-9][^0-9][^0-9]*}/** w,
   deny @{PROC}/sysrq-trigger rwklx,
   deny @{PROC}/mem rwklx,
   deny @{PROC}/kmem rwklx,
