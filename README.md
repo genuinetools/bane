@@ -1,6 +1,6 @@
 # bane
 
-[![Circle CI](https://circleci.com/gh/jfrazelle/bane.svg?style=svg)](https://circleci.com/gh/jfrazelle/bane)
+[![Travis CI](https://travis-ci.org/jfrazelle/bane.svg?branch=master)](https://travis-ci.org/jfrazelle/bane.svg?branch=master)
 
 AppArmor profile generator for docker containers. Basically a better AppArmor
 profile, than creating one by hand, because who would ever do that.
@@ -111,6 +111,6 @@ For the above `sample.toml` the generated profile is available as [docker-nginx-
 ### Integration with Docker
 
 This was originally a proof of concept for what will hopefully become a native
-security profile in the Docker engine. For more information on this, see 
+security profile in the Docker engine. For more information on this, see
 [docker/docker#17142](https://github.com/docker/docker/issues/17142).
 
