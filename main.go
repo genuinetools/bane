@@ -9,7 +9,7 @@ import (
 
 	"github.com/BurntSushi/toml"
 	"github.com/Sirupsen/logrus"
-	"github.com/jfrazelle/bane/apparmor"
+	"github.com/jessfraz/bane/apparmor"
 )
 
 const (

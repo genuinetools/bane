@@ -1,6 +1,6 @@
 # bane
 
-[![Travis CI](https://travis-ci.org/jfrazelle/bane.svg?branch=master)](https://travis-ci.org/jfrazelle/bane)
+[![Travis CI](https://travis-ci.org/jessfraz/bane.svg?branch=master)](https://travis-ci.org/jessfraz/bane)
 
 AppArmor profile generator for docker containers. Basically a better AppArmor
 profile, than creating one by hand, because who would ever do that.
