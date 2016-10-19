@@ -1,5 +1,5 @@
 # name of the profile, we will auto prefix with `docker-`
-# so the final profile name will be `docker-nginx`
+# so the final profile name will be `docker-nginx-sample`
 Name = "nginx-sample"
 
 [Filesystem]
