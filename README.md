@@ -10,6 +10,25 @@ profile, than creating one by hand, because who would ever do that.
 
 ![bane](bane.jpg)
 
+
+## Installation
+
+#### Binaries
+
+- **darwin** [386](https://github.com/jessfraz/bane/releases/download/v0.1.0/bane-darwin-386) / [amd64](https://github.com/jessfraz/bane/releases/download/v0.1.0/bane-darwin-amd64)
+- **freebsd** [386](https://github.com/jessfraz/bane/releases/download/v0.1.0/bane-freebsd-386) / [amd64](https://github.com/jessfraz/bane/releases/download/v0.1.0/bane-freebsd-amd64)
+- **linux** [386](https://github.com/jessfraz/bane/releases/download/v0.1.0/bane-linux-386) / [amd64](https://github.com/jessfraz/bane/releases/download/v0.1.0/bane-linux-amd64) / [arm](https://github.com/jessfraz/bane/releases/download/v0.1.0/bane-linux-arm) / [arm64](https://github.com/jessfraz/bane/releases/download/v0.1.0/bane-linux-arm64)
+- **solaris** [amd64](https://github.com/jessfraz/bane/releases/download/v0.1.0/bane-solaris-amd64)
+- **windows** [386](https://github.com/jessfraz/bane/releases/download/v0.1.0/bane-windows-386) / [amd64](https://github.com/jessfraz/bane/releases/download/v0.1.0/bane-windows-amd64)
+
+#### Via Go
+
+```bash
+$ go get github.com/jessfraz/bane
+```
+
+## Usage
+
 ```console
 $ bane -h
  _
