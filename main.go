@@ -10,6 +10,7 @@ import (
 	"github.com/BurntSushi/toml"
 	"github.com/Sirupsen/logrus"
 	"github.com/jessfraz/bane/apparmor"
+	"github.com/jessfraz/bane/version"
 )
 
 const (
@@ -23,31 +24,34 @@ const (
  Version: %s
 
 `
-	// VERSION is the binary version.
-	VERSION = "v0.1.0"
 )
 
 var (
 	apparmorProfileDir string
 
-	debug   bool
-	version bool
+	debug bool
+	vrsn  bool
 )
 
 func init() {
 	// parse flags
 	flag.StringVar(&apparmorProfileDir, "profile-dir", "/etc/apparmor.d/containers", "directory for saving the profiles")
 
-	flag.BoolVar(&version, "version", false, "print version and exit")
-	flag.BoolVar(&version, "v", false, "print version and exit (shorthand)")
+	flag.BoolVar(&vrsn, "version", false, "print version and exit")
+	flag.BoolVar(&vrsn, "v", false, "print version and exit (shorthand)")
 	flag.BoolVar(&debug, "d", false, "run in debug mode")
 
 	flag.Usage = func() {
-		fmt.Fprint(os.Stderr, fmt.Sprintf(BANNER, VERSION))
+		fmt.Fprint(os.Stderr, fmt.Sprintf(BANNER, version.VERSION))
 		flag.PrintDefaults()
 	}
 
 	flag.Parse()
+
+	if vrsn {
+		fmt.Printf("bane version %s, build %s", version.VERSION, version.GITCOMMIT)
+		os.Exit(0)
+	}
 
 	if flag.NArg() < 1 {
 		usageAndExit("Pass the path to the config file.", 1)
@@ -60,8 +64,8 @@ func init() {
 		usageAndExit("", 0)
 	}
 
-	if version || arg == "version" {
-		fmt.Printf("%s", VERSION)
+	if arg == "version" {
+		fmt.Printf("bane version %s, build %s", version.VERSION, version.GITCOMMIT)
 		os.Exit(0)
 	}
 

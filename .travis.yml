@@ -18,3 +18,24 @@
     - test -z "$(golint ./... | grep -v vendor | tee /dev/stderr)"
     - test -z "$(gofmt -s -l . | grep -v vendor | tee /dev/stderr)"
     - go test $(go list ./... | grep -v vendor)
+    - make release
+  deploy:
+    provider: releases
+    api_key:
+      secure: "E9Vf+YGU17qKZgIAzBNq22cawUKK/IXamBaB2JmEoeVfS1I6oN+7ibUrjiBeGAbFean/MsUUjhuzkElsbxh9k9VHtiM09CvctgxjCGveY7hMvXo6JOGW8JzjVHO15hwAE0a6XSYlmrz/AQ9A6hne6u4o+4h+YuE6QksWiEq7GNlP5BA0VYDAAfPEvZWhU7dUxp8hp7RAmtIUEuNa9SUCx0WRZPMjeUpPifN5zGTCBxJqrCXIDvsO4JhaqrUx6xONC5ZJiuDXIFXrBf1nCQ1J7S4hbV3TdohL4rUo4gbb+IvO54Wmubkm3VBB0O5ZAEFpjDlkbcMXBQrDkhmPLajM/MJ5ifu34T+RRb42tcplVi9Xe+HQ856BnvDVSz3uhFAe/5IPF5/jaUu75K0MZ0Cnaxhwhduxfny0wwbuTrSeEm4Xc79m6pTqovJLvxsao81dtTOIBzElJypIj4mbdPyE1woTTRB47h8a1e25HCxl93Cc1wfr3hiMy8fzSpzP/hxAQxI1WGeWBCHuaGFGDEFOpbbLqXJpdEme4GRKnxIMO5UGeVDzeLisaSZGC1wRrSvWTFFPcNQ29tmTr3DgDrpR6PTMlb2c+dI/9QXP1xldn1psQRhO/ixXOqwyhbJhBB6xmZfqpZhsFgjhMHpOC8ba3ulZDraVsNJAX+XIGNbqNZU="
+    go: 1.7
+    file:
+      - cross/bane-darwin-386
+      - cross/bane-freebsd-386
+      - cross/bane-linux-386
+      - cross/bane-windows-386
+      - cross/bane-darwin-amd64
+      - cross/bane-freebsd-amd64
+      - cross/bane-linux-amd64
+      - cross/bane-linux-arm
+      - cross/bane-linux-arm64
+      - cross/bane-solaris-amd64
+      - cross/bane-windows-amd64
+    skip_cleanup: true
+    on:
+      tags: true
