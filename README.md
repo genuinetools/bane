@@ -15,11 +15,11 @@ profile, than creating one by hand, because who would ever do that.
 
 #### Binaries
 
-- **darwin** [386](https://github.com/jessfraz/bane/releases/download/v0.1.1/bane-darwin-386) / [amd64](https://github.com/jessfraz/bane/releases/download/v0.1.1/bane-darwin-amd64)
-- **freebsd** [386](https://github.com/jessfraz/bane/releases/download/v0.1.1/bane-freebsd-386) / [amd64](https://github.com/jessfraz/bane/releases/download/v0.1.1/bane-freebsd-amd64)
-- **linux** [386](https://github.com/jessfraz/bane/releases/download/v0.1.1/bane-linux-386) / [amd64](https://github.com/jessfraz/bane/releases/download/v0.1.1/bane-linux-amd64) / [arm](https://github.com/jessfraz/bane/releases/download/v0.1.1/bane-linux-arm) / [arm64](https://github.com/jessfraz/bane/releases/download/v0.1.1/bane-linux-arm64)
-- **solaris** [amd64](https://github.com/jessfraz/bane/releases/download/v0.1.1/bane-solaris-amd64)
-- **windows** [386](https://github.com/jessfraz/bane/releases/download/v0.1.1/bane-windows-386) / [amd64](https://github.com/jessfraz/bane/releases/download/v0.1.1/bane-windows-amd64)
+- **darwin** [386](https://github.com/jessfraz/bane/releases/download/v0.2.0/bane-darwin-386) / [amd64](https://github.com/jessfraz/bane/releases/download/v0.2.0/bane-darwin-amd64)
+- **freebsd** [386](https://github.com/jessfraz/bane/releases/download/v0.2.0/bane-freebsd-386) / [amd64](https://github.com/jessfraz/bane/releases/download/v0.2.0/bane-freebsd-amd64)
+- **linux** [386](https://github.com/jessfraz/bane/releases/download/v0.2.0/bane-linux-386) / [amd64](https://github.com/jessfraz/bane/releases/download/v0.2.0/bane-linux-amd64) / [arm](https://github.com/jessfraz/bane/releases/download/v0.2.0/bane-linux-arm) / [arm64](https://github.com/jessfraz/bane/releases/download/v0.2.0/bane-linux-arm64)
+- **solaris** [amd64](https://github.com/jessfraz/bane/releases/download/v0.2.0/bane-solaris-amd64)
+- **windows** [386](https://github.com/jessfraz/bane/releases/download/v0.2.0/bane-windows-386) / [amd64](https://github.com/jessfraz/bane/releases/download/v0.2.0/bane-windows-amd64)
 
 #### Via Go
 
@@ -37,7 +37,7 @@ $ bane -h
 | |_) | (_| | | | |  __/
 |_.__/ \__,_|_| |_|\___|
  Custom AppArmor profile generator for docker containers
- Version: v0.1.1
+ Version: v0.2.0
 
   -d    run in debug mode
   -profile-dir string
