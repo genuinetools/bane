@@ -24,7 +24,7 @@
     provider: releases
     api_key:
       secure: "LMrByDP/cIjxaGdXAOrDGtlzsiBt//LRrhrwpdimdl6rnijkc+NlhRhGNItceJzQLs6kz5sihHY1YVaeqzJXnJ+Eo4b0Kz1BQwpOk5DRn85y+tTg2G7HvCIjrWsVleCnbmAK/IbOsVdY7HlK7s0i9eG+7fYfSGiNMevwwtfQjiKH3yFu+nUPPH4Z85Lvz8Wvjg0Nmhnt+nY4R7IFHgMNVGsUn1qjUrrCK8X9fuY3ulnK6nghQ/KSrxyJdkfWWOqs8EfxMpcKH6iL5wYeAXxEFp97WJiqjqIh2RfGjB4q/nRWVWDviVUxUxrgIFh4AEtZMphdKsNhoyyLMZB42O1daP7SCR498xeCZLpx4jTfOTJ6QhD2zJ56rkXlvcEDomCIo+A3fHUiknKLmEnRE6aQQTkn3E49D7A+GG15x/3ec6WBizR1Ht8nMxDh7Z5glVqs8Sf/AHry3RLEYbO6HS2j3Axx6yS9dg5K8keOpKygVpyNNFUb1KDpO/ZJdq4GaBqyjHZoh/PBNvYxHsMhVL9L57LBabckV5pTjGunTTY6CHmhPdzWCVCl1SRRUw1spqZMxydQSkxYd04QqAVsb3vw4f+iA0uTSgWRKpcC0CVjiML1BIxnjXDmBP7v6+oVaEHF9Gyj9+StvodS7GUWScL8p1NvQlHaC4bdzKytMTMuzmc="
-    go: 1.8
+    go: 1.8.x
     file:
       - cross/bane-linux-amd64.md5
       - cross/bane-windows-386.sha256
