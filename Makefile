@@ -36,7 +36,7 @@ $(NAME): *.go VERSION
 	go build -tags "$(BUILDTAGS)" ${GO_LDFLAGS} -o $(NAME) .
 
 .PHONY: static
-static: # Builds a static executable
+static: ## Builds a static executable
 	@echo "+ $@"
 	CGO_ENABLED=0 go build \
 				-tags "$(BUILDTAGS) static_build" \
@@ -95,6 +95,19 @@ endef
 release: *.go VERSION ## Builds the cross-compiled binaries, naming them in such a way for release (eg. binary-GOOS-GOARCH)
 	@echo "+ $@"
 	$(foreach GOOSARCH,$(GOOSARCHES), $(call buildrelease,$(subst /,,$(dir $(GOOSARCH))),$(notdir $(GOOSARCH))))
+
+.PHONY: bump-version
+BUMP := patch
+bump-version: ## Bump the version in the version file. Set KIND to [ patch | major | minor ]
+	@go get -u github.com/jessfraz/junk/sembump # update sembump tool
+	$(eval NEW_VERSION = $(shell sembump --kind $(BUMP) $(VERSION)))
+	@echo "Bumping VERSION from $(VERSION) to $(NEW_VERSION)"
+	echo $(NEW_VERSION) > VERSION
+	@echo "Updating links to download binaries in README.md"
+	sed -i s/$(VERSION)/$(NEW_VERSION)/g README.md
+	git add VERSION README.md
+	git commit -vsam "Bump version to $(NEW_VERSION)"
+	@echo "Run make tag to create and push the tag for new version $(NEW_VERSION)"
 
 .PHONY: tag
 tag: ## Create a new git tag to prepare to build a release
