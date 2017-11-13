@@ -63,10 +63,7 @@ func (profile *ProfileConfig) Generate(out io.Writer) error {
 	if abstractionsExists("base") {
 		profile.InnerImports = append(profile.InnerImports, "#include <abstractions/base>")
 	}
-	if err := compiled.Execute(out, profile); err != nil {
-		return err
-	}
-	return nil
+	return compiled.Execute(out, profile)
 }
 
 // check if the tunables/global exist
