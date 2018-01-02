@@ -8,9 +8,9 @@ import (
 	"strings"
 
 	"github.com/BurntSushi/toml"
-	"github.com/Sirupsen/logrus"
 	"github.com/jessfraz/bane/apparmor"
 	"github.com/jessfraz/bane/version"
+	"github.com/sirupsen/logrus"
 )
 
 const (
