@@ -8,8 +8,8 @@ import (
 	"strings"
 
 	"github.com/BurntSushi/toml"
-	"github.com/jessfraz/bane/apparmor"
-	"github.com/jessfraz/bane/version"
+	"github.com/genuinetools/bane/apparmor"
+	"github.com/genuinetools/bane/version"
 	"github.com/sirupsen/logrus"
 )
 
