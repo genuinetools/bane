@@ -7,7 +7,7 @@ ENV GOPATH /go
 RUN	apk add --no-cache \
 	ca-certificates
 
-COPY . /go/src/github.com/jessfraz/bane
+COPY . /go/src/github.com/genuinetools/bane
 
 RUN set -x \
 	&& apk add --no-cache --virtual .build-deps \
@@ -16,7 +16,7 @@ RUN set -x \
 		libc-dev \
 		libgcc \
 		make \
-	&& cd /go/src/github.com/jessfraz/bane \
+	&& cd /go/src/github.com/genuinetools/bane \
 	&& make static \
 	&& mv bane /usr/bin/bane \
 	&& apk del .build-deps \
