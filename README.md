@@ -1,6 +1,8 @@
 # bane
 
-[![Travis CI](https://travis-ci.org/genuinetools/bane.svg?branch=master)](https://travis-ci.org/genuinetools/bane)
+[![Travis CI](https://img.shields.io/travis/genuinetools/bane.svg?style=for-the-badge)](https://travis-ci.org/genuinetools/bane)
+[![GoDoc](https://img.shields.io/badge/godoc-reference-5272B4.svg?style=for-the-badge)](https://godoc.org/github.com/genuinetools/bane)
+[![Github All Releases](https://img.shields.io/github/downloads/genuinetools/bane/total.svg?style=for-the-badge)](https://github.com/genuinetools/bane/releases)
 
 AppArmor profile generator for docker containers. Basically a better AppArmor
 profile, than creating one by hand, because who would ever do that.
@@ -15,15 +17,11 @@ profile, than creating one by hand, because who would ever do that.
 
 #### Binaries
 
-- **darwin** [386](https://github.com/genuinetools/bane/releases/download/v0.4.1/bane-darwin-386) / [amd64](https://github.com/genuinetools/bane/releases/download/v0.4.1/bane-darwin-amd64)
-- **freebsd** [386](https://github.com/genuinetools/bane/releases/download/v0.4.1/bane-freebsd-386) / [amd64](https://github.com/genuinetools/bane/releases/download/v0.4.1/bane-freebsd-amd64)
-- **linux** [386](https://github.com/genuinetools/bane/releases/download/v0.4.1/bane-linux-386) / [amd64](https://github.com/genuinetools/bane/releases/download/v0.4.1/bane-linux-amd64) / [arm](https://github.com/genuinetools/bane/releases/download/v0.4.1/bane-linux-arm) / [arm64](https://github.com/genuinetools/bane/releases/download/v0.4.1/bane-linux-arm64)
-- **solaris** [amd64](https://github.com/genuinetools/bane/releases/download/v0.4.1/bane-solaris-amd64)
-- **windows** [386](https://github.com/genuinetools/bane/releases/download/v0.4.1/bane-windows-386) / [amd64](https://github.com/genuinetools/bane/releases/download/v0.4.1/bane-windows-amd64)
+For installation instructions from binaries please visit the [Releases Page](https://github.com/genuinetools/bane/releases).
 
 #### Via Go
 
-```bash
+```console
 $ go get github.com/genuinetools/bane
 ```
 
@@ -132,4 +130,3 @@ For the above `sample.toml` the generated profile is available as [docker-nginx-
 This was originally a proof of concept for what will hopefully become a native
 security profile in the Docker engine. For more information on this, see
 [docker/docker#17142](https://github.com/docker/docker/issues/17142).
-

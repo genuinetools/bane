@@ -18,39 +18,39 @@ jobs:
       deploy:
         provider: releases
         file:
-          - cross/bane-linux-amd64.md5
-          - cross/bane-windows-386.sha256
-          - cross/bane-linux-arm
-          - cross/bane-darwin-amd64.md5
           - cross/bane-darwin-amd64
-          - cross/bane-solaris-amd64.md5
-          - cross/bane-linux-arm64.sha256
-          - cross/bane-linux-arm.sha256
-          - cross/bane-linux-386.sha256
+          - cross/bane-darwin-amd64.md5
+          - cross/bane-darwin-amd64.sha256
+          - cross/bane-darwin-386
           - cross/bane-darwin-386.md5
-          - cross/bane-windows-386.md5
+          - cross/bane-darwin-386.sha256
+          - cross/bane-freebsd-amd64
           - cross/bane-freebsd-amd64.md5
-          - cross/bane-linux-arm64.md5
-          - cross/bane-linux-arm64
           - cross/bane-freebsd-amd64.sha256
-          - cross/bane-freebsd-386.md5
-          - cross/bane-linux-amd64.sha256
-          - cross/bane-linux-386.md5
           - cross/bane-freebsd-386
+          - cross/bane-freebsd-386.md5
+          - cross/bane-freebsd-386.sha256
+          - cross/bane-linux-arm
+          - cross/bane-linux-arm.md5
+          - cross/bane-linux-arm.sha256
+          - cross/bane-linux-arm64
+          - cross/bane-linux-arm64.md5
+          - cross/bane-linux-arm64.sha256
+          - cross/bane-linux-amd64
+          - cross/bane-linux-amd64.md5
+          - cross/bane-linux-amd64.sha256
+          - cross/bane-linux-386
+          - cross/bane-linux-386.md5
+          - cross/bane-linux-386.sha256
+          - cross/bane-solaris-amd64
+          - cross/bane-solaris-amd64.md5
           - cross/bane-solaris-amd64.sha256
           - cross/bane-windows-amd64
           - cross/bane-windows-amd64.md5
           - cross/bane-windows-amd64.sha256
-          - cross/bane-linux-arm.md5
-          - cross/bane-darwin-386.sha256
-          - cross/bane-darwin-amd64.sha256
           - cross/bane-windows-386
-          - cross/bane-solaris-amd64
-          - cross/bane-darwin-386
-          - cross/bane-linux-386
-          - cross/bane-freebsd-amd64
-          - cross/bane-freebsd-386.sha256
-          - cross/bane-linux-amd64
+          - cross/bane-windows-386.md5
+          - cross/bane-windows-386.sha256
         skip_cleanup: true
         on:
           tags: true
