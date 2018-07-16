@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"flag"
 	"fmt"
 	"io/ioutil"
@@ -10,6 +11,7 @@ import (
 	"github.com/BurntSushi/toml"
 	"github.com/genuinetools/bane/apparmor"
 	"github.com/genuinetools/bane/version"
+	"github.com/genuinetools/pkg/cli"
 	"github.com/sirupsen/logrus"
 )
 
@@ -30,89 +32,72 @@ var (
 	apparmorProfileDir string
 
 	debug bool
-	vrsn  bool
 )
 
-func init() {
-	// parse flags
-	flag.StringVar(&apparmorProfileDir, "profile-dir", "/etc/apparmor.d/containers", "directory for saving the profiles")
-
-	flag.BoolVar(&vrsn, "version", false, "print version and exit")
-	flag.BoolVar(&vrsn, "v", false, "print version and exit (shorthand)")
-	flag.BoolVar(&debug, "d", false, "run in debug mode")
-
-	flag.Usage = func() {
-		fmt.Fprint(os.Stderr, fmt.Sprintf(BANNER, version.VERSION))
-		flag.PrintDefaults()
-	}
-
-	flag.Parse()
-
-	if vrsn {
-		fmt.Printf("bane version %s, build %s", version.VERSION, version.GITCOMMIT)
-		os.Exit(0)
-	}
-
-	if flag.NArg() < 1 {
-		usageAndExit("Pass the path to the config file.", 1)
-	}
-
-	// parse the arg
-	arg := flag.Args()[0]
-
-	if arg == "help" {
-		usageAndExit("", 0)
-	}
-
-	if arg == "version" {
-		fmt.Printf("bane version %s, build %s", version.VERSION, version.GITCOMMIT)
-		os.Exit(0)
-	}
-
-	// set log level
-	if debug {
-		logrus.SetLevel(logrus.DebugLevel)
-	}
-}
-
 func main() {
-	// parse the profile config file
-	profileConfig := flag.Args()[0]
+	// Create a new cli program.
+	p := cli.NewProgram()
+	p.Name = "bane"
+	p.Description = "Tool to set all GitHub repo master branches to be protected"
 
-	// make sure the file exists
-	if _, err := os.Stat(profileConfig); os.IsNotExist(err) {
-		logrus.Fatalf("No such file or directory: %s", profileConfig)
+	// Set the GitCommit and Version.
+	p.GitCommit = version.GITCOMMIT
+	p.Version = version.VERSION
+
+	// Setup the global flags.
+	p.FlagSet = flag.NewFlagSet("global", flag.ExitOnError)
+	p.FlagSet.StringVar(&apparmorProfileDir, "profile-dir", "/etc/apparmor.d/containers", "directory for saving the profiles")
+	p.FlagSet.BoolVar(&debug, "d", false, "enable debug logging")
+
+	// Set the before function.
+	p.Before = func(ctx context.Context) error {
+		// Set the log level.
+		if debug {
+			logrus.SetLevel(logrus.DebugLevel)
+		}
+
+		if p.FlagSet.NArg() < 1 {
+			return fmt.Errorf("Pass the path to the config file")
+		}
+
+		return nil
 	}
 
-	file, err := ioutil.ReadFile(profileConfig)
-	if err != nil {
-		logrus.Fatalf("Reading file %s failed: %v", profileConfig, err)
+	// Set the main program action.
+	p.Action = func(ctx context.Context, args []string) error {
+		// parse the profile config file
+		profileConfig := args[0]
+
+		// make sure the file exists
+		if _, err := os.Stat(profileConfig); os.IsNotExist(err) {
+			logrus.Fatalf("No such file or directory: %s", profileConfig)
+		}
+
+		file, err := ioutil.ReadFile(profileConfig)
+		if err != nil {
+			logrus.Fatalf("Reading file %s failed: %v", profileConfig, err)
+		}
+
+		var profile apparmor.ProfileConfig
+		if _, err := toml.Decode(string(file), &profile); err != nil {
+			logrus.Fatalf("Parsing config file %s failed: %q", profileConfig, err)
+		}
+
+		// clean the profile name so we are sure it starts with `docker-`
+		if !strings.HasPrefix(profile.Name, "docker-") {
+			profile.Name = fmt.Sprintf("docker-%s", profile.Name)
+		}
+
+		// install the profile
+		if err := profile.Install(apparmorProfileDir); err != nil {
+			logrus.Fatalf("Installing profile %s failed: %v", profile.Name, err)
+		}
+
+		fmt.Printf("Profile installed successfully you can now run the profile with\n`docker run --security-opt=\"apparmor:%s\"`\n", profile.Name)
+
+		return nil
 	}
 
-	var profile apparmor.ProfileConfig
-	if _, err := toml.Decode(string(file), &profile); err != nil {
-		logrus.Fatalf("Parsing config file %s failed: %q", profileConfig, err)
-	}
-
-	// clean the profile name so we are sure it starts with `docker-`
-	if !strings.HasPrefix(profile.Name, "docker-") {
-		profile.Name = fmt.Sprintf("docker-%s", profile.Name)
-	}
-
-	// install the profile
-	if err := profile.Install(apparmorProfileDir); err != nil {
-		logrus.Fatalf("Installing profile %s failed: %v", profile.Name, err)
-	}
-
-	fmt.Printf("Profile installed successfully you can now run the profile with\n`docker run --security-opt=\"apparmor:%s\"`\n", profile.Name)
-}
-
-func usageAndExit(message string, exitCode int) {
-	if message != "" {
-		fmt.Fprintf(os.Stderr, message)
-		fmt.Fprintf(os.Stderr, "\n\n")
-	}
-	flag.Usage()
-	fmt.Fprintf(os.Stderr, "\n")
-	os.Exit(exitCode)
+	// Run our program.
+	p.Run()
 }

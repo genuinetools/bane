@@ -29,20 +29,18 @@ $ go get github.com/genuinetools/bane
 
 ```console
 $ bane -h
- _
-| |__   __ _ _ __   ___
-| '_ \ / _` | '_ \ / _ \
-| |_) | (_| | | | |  __/
-|_.__/ \__,_|_| |_|\___|
- Custom AppArmor profile generator for docker containers
- Version: v0.4.1
+bane -  Tool to set all GitHub repo master branches to be protected.
 
-  -d    run in debug mode
-  -profile-dir string
-        directory for saving the profiles (default "/etc/apparmor.d/containers")
-  -v    print version and exit (shorthand)
-  -version
-        print version and exit
+Usage: bane <command>
+
+Flags:
+
+  -d            enable debug logging (default: false)
+  -profile-dir  directory for saving the profiles (default: /etc/apparmor.d/containers)
+
+Commands:
+
+  version  Show the version information.
 ```
 
 ### Config File
