@@ -12,6 +12,15 @@ profile, than creating one by hand, because who would ever do that.
 
 ![bane](bane.jpg)
 
+ * [Installation](README.md#installation)
+      * [Binaries](README.md#binaries)
+      * [Via Go](README.md#via-go)
+ * [Usage](README.md#usage)
+   * [Config File](README.md#config-file)
+      * [File Globbing](README.md#file-globbing)
+   * [Installing a Profile](README.md#installing-a-profile)
+   * [What does the generated profile look like?](README.md#what-does-the-generated-profile-look-like)
+   * [Integration with Docker](README.md#integration-with-docker)
 
 ## Installation
 
