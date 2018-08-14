@@ -38,7 +38,7 @@ $ go get github.com/genuinetools/bane
 
 ```console
 $ bane -h
-bane -  Tool to set all GitHub repo master branches to be protected.
+bane -  Custom AppArmor profile generator for docker containers
 
 Usage: bane <command>
 
