@@ -38,7 +38,7 @@ func main() {
 	// Create a new cli program.
 	p := cli.NewProgram()
 	p.Name = "bane"
-	p.Description = "Tool to set all GitHub repo master branches to be protected"
+	p.Description = "Custom AppArmor profile generator for docker containers"
 
 	// Set the GitCommit and Version.
 	p.GitCommit = version.GITCOMMIT
