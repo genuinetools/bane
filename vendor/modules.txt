@@ -1,0 +1,11 @@
+# github.com/BurntSushi/toml v0.3.1
+github.com/BurntSushi/toml
+# github.com/genuinetools/pkg v0.0.0-20180910213200-1c141f661797
+github.com/genuinetools/pkg/cli
+# github.com/sirupsen/logrus v1.0.6
+github.com/sirupsen/logrus
+# golang.org/x/crypto v0.0.0-20180910181607-0e37d006457b
+golang.org/x/crypto/ssh/terminal
+# golang.org/x/sys v0.0.0-20180925112736-b09afc3d579e
+golang.org/x/sys/unix
+golang.org/x/sys/windows
