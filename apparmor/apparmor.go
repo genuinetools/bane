@@ -103,7 +103,7 @@ func (profile *ProfileConfig) Install(dir string) error {
 
 	output, err := cmd.CombinedOutput()
 	if err != nil {
-		return fmt.Errorf("Error loading apparmor profile %s: %v (%s)", profile.Name, err, output)
+		return fmt.Errorf("loading apparmor profile %s failed: %v (%s)", profile.Name, err, output)
 	}
 	return nil
 }

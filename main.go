@@ -15,19 +15,6 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
-const (
-	// BANNER is what is printed for help/info output
-	BANNER = ` _
-| |__   __ _ _ __   ___
-| '_ \ / _` + "`" + ` | '_ \ / _ \
-| |_) | (_| | | | |  __/
-|_.__/ \__,_|_| |_|\___|
- Custom AppArmor profile generator for docker containers
- Version: %s
-
-`
-)
-
 var (
 	apparmorProfileDir string
 
@@ -57,7 +44,7 @@ func main() {
 		}
 
 		if p.FlagSet.NArg() < 1 {
-			return fmt.Errorf("Pass the path to the config file")
+			return fmt.Errorf("pass the path to the config file")
 		}
 
 		return nil
