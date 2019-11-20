@@ -1,15 +1,3 @@
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Table of Contents**
-
-- [TOML parser and encoder for Go with reflection](#toml-parser-and-encoder-for-go-with-reflection)
-  - [Testing](#testing)
-  - [Examples](#examples)
-  - [Using the `encoding.TextUnmarshaler` interface](#using-the-encodingtextunmarshaler-interface)
-  - [More complex usage](#more-complex-usage)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
 ## TOML parser and encoder for Go with reflection
 
 TOML stands for Tom's Obvious, Minimal Language. This Go package provides a

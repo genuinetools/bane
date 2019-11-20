@@ -21,9 +21,9 @@ jobs:
           entrypoint: bash
           args: -c "upload-assets ./cross/*"
       - name: update release body
-        uses: docker://r.j3ss.co/bane
+        uses: docker://r.j3ss.co/pepper
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           entrypoint: sh
-          args: -c "bane release --repo $GITHUB_REPOSITORY -d --nouser"
+          args: -c "pepper release --repo $GITHUB_REPOSITORY -d --nouser"
