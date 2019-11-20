@@ -1,3 +1,25 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [Building `sys/unix`](#building-sysunix)
+  - [Build Systems](#build-systems)
+    - [Old Build System (currently for `GOOS != "Linux" || GOARCH == "sparc64"`)](#old-build-system-currently-for-goos--linux--goarch--sparc64)
+    - [New Build System (currently for `GOOS == "Linux" && GOARCH != "sparc64"`)](#new-build-system-currently-for-goos--linux--goarch--sparc64)
+  - [Component files](#component-files)
+    - [asm files](#asm-files)
+    - [mksysnum](#mksysnum)
+    - [mksyscall.pl](#mksyscallpl)
+    - [types files](#types-files)
+    - [mkerrors.sh](#mkerrorssh)
+  - [Generated files](#generated-files)
+    - [`zerror_${GOOS}_${GOARCH}.go`](#zerror_goos_goarchgo)
+    - [`zsyscall_${GOOS}_${GOARCH}.go`](#zsyscall_goos_goarchgo)
+    - [`zsysnum_${GOOS}_${GOARCH}.go`](#zsysnum_goos_goarchgo)
+    - [`ztypes_${GOOS}_${GOARCH}.go`](#ztypes_goos_goarchgo)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # Building `sys/unix`
 
 The sys/unix package provides access to the raw system call interface of the

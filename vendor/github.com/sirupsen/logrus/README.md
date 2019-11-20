@@ -1,3 +1,26 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [Logrus <img src="http://i.imgur.com/hTeVwmJ.png" width="40" height="40" alt=":walrus:" class="emoji" title=":walrus:"/>&nbsp;*&nbsp;*](#logrus-img-srchttpiimgurcomhtevwmjpng-width40-height40-altwalrus-classemoji-titlewalrusnbspnbsp)
+      - [Case-sensitivity](#case-sensitivity)
+      - [Example](#example)
+      - [Fields](#fields)
+      - [Default Fields](#default-fields)
+      - [Hooks](#hooks)
+      - [Level logging](#level-logging)
+      - [Entries](#entries)
+      - [Environments](#environments)
+      - [Formatters](#formatters)
+      - [Logger as an `io.Writer`](#logger-as-an-iowriter)
+      - [Rotation](#rotation)
+      - [Tools](#tools)
+      - [Testing](#testing)
+      - [Fatal handlers](#fatal-handlers)
+      - [Thread safety](#thread-safety)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # Logrus <img src="http://i.imgur.com/hTeVwmJ.png" width="40" height="40" alt=":walrus:" class="emoji" title=":walrus:"/>&nbsp;[![Build Status](https://travis-ci.org/sirupsen/logrus.svg?branch=master)](https://travis-ci.org/sirupsen/logrus)&nbsp;[![GoDoc](https://godoc.org/github.com/sirupsen/logrus?status.svg)](https://godoc.org/github.com/sirupsen/logrus)
 
 Logrus is a structured logger for Go (golang), completely API compatible with

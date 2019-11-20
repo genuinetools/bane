@@ -13,8 +13,21 @@ profile, than creating one by hand, because who would ever do that.
 
 ![bane](bane.jpg)
 
-<!-- START doctoc -->
-<!-- END doctoc -->
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [Installation](#installation)
+    - [Binaries](#binaries)
+    - [Via Go](#via-go)
+- [Usage](#usage)
+  - [Config File](#config-file)
+    - [File Globbing](#file-globbing)
+  - [Installing a Profile](#installing-a-profile)
+  - [What does the generated profile look like?](#what-does-the-generated-profile-look-like)
+  - [Integration with Docker](#integration-with-docker)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ## Installation
 

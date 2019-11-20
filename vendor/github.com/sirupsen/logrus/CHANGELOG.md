@@ -1,3 +1,34 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [1.0.5](#105)
+- [1.0.4](#104)
+- [1.0.3](#103)
+- [1.0.2](#102)
+- [1.0.1](#101)
+- [1.0.0](#100)
+- [0.11.5](#0115)
+- [0.11.4](#0114)
+- [0.11.3](#0113)
+- [0.11.2](#0112)
+- [0.11.1](#0111)
+- [0.11.0](#0110)
+- [0.10.0](#0100)
+- [0.9.0](#090)
+- [0.8.7](#087)
+- [0.8.6](#086)
+- [0.8.5](#085)
+- [0.8.4](#084)
+- [0.8.3](#083)
+- [0.8.2](#082)
+- [0.8.1](#081)
+- [0.8.0](#080)
+- [0.7.3](#073)
+- [0.7.2](#072)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # 1.0.5
 
 * Fix hooks race (#707)
