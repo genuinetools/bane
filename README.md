@@ -53,6 +53,7 @@ Flags:
 
   -d            enable debug logging (default: false)
   -profile-dir  directory for saving the profiles (default: /etc/apparmor.d/containers)
+  -u            unload and remove profile (default: false)
 
 Commands:
 

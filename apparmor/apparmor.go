@@ -107,3 +107,29 @@ func (profile *ProfileConfig) Install(dir string) error {
 	}
 	return nil
 }
+
+// Uninstall unloads the profile with `apparmor_parser`
+// then removes it from given directory
+func (profile *ProfileConfig) Uninstall(dir string) error {
+	// Make sure the path exists
+	if err := os.MkdirAll(dir, 0755); err != nil {
+		return err
+	}
+
+	cmd := exec.Command("/sbin/apparmor_parser", "-R", profile.Name)
+	// to use the parser directly we have to make sure we are in the correct
+	// dir with the profile
+	cmd.Dir = dir
+
+	output, err := cmd.CombinedOutput()
+	if err != nil {
+		return fmt.Errorf("Unloading apparmor profile %s failed: %v (%s)", profile.Name, err, output)
+	}
+
+	// Last thing: remove profile file
+	if err := os.Remove(filepath.Join(dir, profile.Name)); err != nil {
+		return err
+	}
+
+	return nil
+}

@@ -18,7 +18,7 @@ import (
 var (
 	apparmorProfileDir string
 
-	debug bool
+	debug, uninstall bool
 )
 
 func main() {
@@ -35,6 +35,7 @@ func main() {
 	p.FlagSet = flag.NewFlagSet("global", flag.ExitOnError)
 	p.FlagSet.StringVar(&apparmorProfileDir, "profile-dir", "/etc/apparmor.d/containers", "directory for saving the profiles")
 	p.FlagSet.BoolVar(&debug, "d", false, "enable debug logging")
+	p.FlagSet.BoolVar(&uninstall, "u", false, "unload and remove profile")
 
 	// Set the before function.
 	p.Before = func(ctx context.Context) error {
@@ -75,12 +76,21 @@ func main() {
 			profile.Name = fmt.Sprintf("docker-%s", profile.Name)
 		}
 
-		// install the profile
-		if err := profile.Install(apparmorProfileDir); err != nil {
-			logrus.Fatalf("Installing profile %s failed: %v", profile.Name, err)
-		}
+		if !uninstall {
+			// install the profile
+			if err := profile.Install(apparmorProfileDir); err != nil {
+				logrus.Fatalf("Installing profile %s failed: %v", profile.Name, err)
+			}
 
-		fmt.Printf("Profile installed successfully you can now run the profile with\n`docker run --security-opt=\"apparmor:%s\"`\n", profile.Name)
+			fmt.Printf("Profile installed successfully you can now run the profile with\n`docker run --security-opt=\"apparmor:%s\"`\n", profile.Name)
+		} else {
+			// uninstall the profile (ie unload and remove)
+			if err := profile.Uninstall(apparmorProfileDir); err != nil {
+				logrus.Fatalf("Uninstalling profile %s failed: %v", profile.Name, err)
+			}
+
+			fmt.Printf("Profile %s uninstalled successfully\n", profile.Name)
+		}
 
 		return nil
 	}
